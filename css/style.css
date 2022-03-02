@@ -1,0 +1,13 @@
+body {
+    font-family: "Fredoka", sans-serif;
+}
+.bg-color {
+    background-color: rgb(215, 218, 221);
+}
+#spinners {
+    display: none;
+    margin-left: 50%;
+}
+.button {
+    margin-left: 180px;
+}
