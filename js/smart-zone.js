@@ -1,5 +1,3 @@
-const spinner = document.getElementById('spinners')
-
 const searchPhone = () => {
     const inputField = document.getElementById('search-field');
     const searchText = inputField.value;
@@ -19,9 +17,9 @@ const searchPhone = () => {
 
 
 
-
+const spinner = document.getElementById('spinners')
 const displaySearchResult = data => {
-    console.log(data)
+    // console.log(data)
     spinner.style.display = 'block'
     const displayResult = document.getElementById('display-result');
     displayResult.textContent = '';
@@ -68,11 +66,15 @@ const loadPhoneDetail = phoneSlug => {
     .then(data => displayPhoneDetail(data.data))
 }
 
+
+
 const displayPhoneDetail = data => {
     // console.log(phone);
     const phoneDetails = document.getElementById('phone-details');
+    phoneDetails.textContent = '';
     const div = document.createElement('div');
     div.classList.add('card');
+    
     div.innerHTML = `
     
     <img src="${data.image}" class="card-img-top w-25  rounded mx-auto  alt="...">
@@ -96,12 +98,12 @@ const displayPhoneDetail = data => {
     </div>
     <div class="list-item text-center">
     <span class="fw-bold fs-6">Other Features:</span>
-        <li>${data.others.WLAN}</li>
-        <li>${data.others.Bluetooth}</li>
-        <li>${data.others.GPS}</li>
-        <li>${data.others.NFC}</li>
-        <li>${data.others.Radio}</li>
-        <li>${data.others.USB}</li>
+        <li>${data.others?.WLAN}</li>
+        <li>${data.others?.Bluetooth}</li>
+        <li>${data.others?.GPS}</li>
+        <li>${data.others?.NFC}</li>
+        <li>${data.others?.Radio}</li>
+        <li>${data.others?.USB}</li>
     </div>
 </div>
     `; 
