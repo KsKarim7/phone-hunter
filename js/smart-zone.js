@@ -1,8 +1,10 @@
+// search result value 
 const searchPhone = () => {
     const inputField = document.getElementById('search-field');
-    const searchText = inputField.value;
-    // console.log(searchText);
+    const searchText = (inputField.value).toLowerCase();
+    // console.log(searchText.toLowerCase());
     inputField.value = '';
+
 
     const url = ` https://openapi.programming-hero.com/api/phones?search=${searchText}`
     // console.log(url)
@@ -16,13 +18,16 @@ const searchPhone = () => {
 // }
 
 
-
+const phoneDetails = document.getElementById('phone-details');
 const spinner = document.getElementById('spinners')
+
+// display phone result 
 const displaySearchResult = data => {
     // console.log(data)
     spinner.style.display = 'block'
     const displayResult = document.getElementById('display-result');
     displayResult.textContent = '';
+    phoneDetails.textContent = '';
     if(data.length == 0){
         const searchFail = document.getElementById('error');
         searchFail.classList.remove('d-none');
@@ -58,6 +63,7 @@ const displaySearchResult = data => {
         spinner.style.display = 'none'
     } 
 }
+// loading phone's details
 const loadPhoneDetail = phoneSlug => {
     console.log(phoneSlug);
     const url = `https://openapi.programming-hero.com/api/phone/${phoneSlug}`
@@ -66,7 +72,7 @@ const loadPhoneDetail = phoneSlug => {
     .then(data => displayPhoneDetail(data.data))
 }
 
-
+// display phone details 
 
 const displayPhoneDetail = data => {
     // console.log(phone);
@@ -80,7 +86,7 @@ const displayPhoneDetail = data => {
     <img src="${data.image}" class="card-img-top w-25  rounded mx-auto  alt="...">
     <div class="card-body">
     <h5 class="card-title text-center">${data.name}</h5>
-    <h5 class="card-title text-center">${data?.releaseDate}</h5>
+    <h5 class="card-title text-center">${data.releaseDate?data.releaseDate:'No release date found'}</h5>
     <div class="list-item text-center">
     <span class="fw-bold fs-6">Main Features:</span>
         <p>Storage: ${data.mainFeatures.storage}</p>
@@ -98,7 +104,7 @@ const displayPhoneDetail = data => {
     </div>
     <div class="list-item text-center">
     <span class="fw-bold fs-6">Other Features:</span>
-        <li>${data.others?.WLAN}</li>
+        <li>${data.others?data.others.WLAN:'not found'}</li>
         <li>${data.others?.Bluetooth}</li>
         <li>${data.others?.GPS}</li>
         <li>${data.others?.NFC}</li>
