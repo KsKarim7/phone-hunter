@@ -11,3 +11,6 @@ body {
 .button {
     margin-left: 180px;
 }
+.list-item {
+    font-size: 13px;
+}
