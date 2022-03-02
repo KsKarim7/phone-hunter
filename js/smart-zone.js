@@ -104,12 +104,12 @@ const displayPhoneDetail = data => {
     </div>
     <div class="list-item text-center">
     <span class="fw-bold fs-6">Other Features:</span>
-        <li>${data.others?data.others.WLAN:'not found'}</li>
-        <li>${data.others?.Bluetooth}</li>
-        <li>${data.others?.GPS}</li>
-        <li>${data.others?.NFC}</li>
-        <li>${data.others?.Radio}</li>
-        <li>${data.others?.USB}</li>
+        <li>${data.others?data.others.WLAN:'no feature found'}</li>
+        <li>${data.others?data.others.Bluetooth:'no feature found'}</li>
+        <li>${data.others?data.others.GPS:'no feature found'}</li>
+        <li>${data.others?data.others.NFC:'no feature found'}</li>
+        <li>${data.others?data.others.Radio:'no feature found'}</li>
+        <li>${data.others?data.others.USB:'no feature found'}</li>
     </div>
 </div>
     `; 
